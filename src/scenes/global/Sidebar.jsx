@@ -16,6 +16,22 @@ import PieChartOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
+const Item = ({ title, to, icon, selected, setSelected }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  return (
+    <MenuItem
+      active={selected === title}
+      style={{ color: colors.grey[100] }}
+      onClick={() => setSelected(title)}
+      icon={icon}
+    >
+      <Typography>{title}</Typography>
+      <Link to={to} />
+    </MenuItem>
+  );
+};
+
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -97,6 +113,9 @@ const Sidebar = () => {
               </Box>
             </Box>
           )}
+
+          {/* MENU ITEMS  */}
+          <Box paddingLeft={isCollapsed ? undefined : "10%"}></Box>
         </Menu>
       </ProSidebar>
     </Box>
