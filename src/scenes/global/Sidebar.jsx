@@ -68,6 +68,35 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
+
+          {/* USER  */}
+          {!isCollapsed && (
+            <Box mb="25px">
+              <Box display="flex" justifyContent="center" alignItems="center">
+                <img
+                  alt="profile-user"
+                  width="100px"
+                  height="100px"
+                  src={`../../assets/profile.png`}
+                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                />
+              </Box>
+
+              <Box textAlign="center">
+                <Typography
+                  variant="h2"
+                  color={colors.grey[100]}
+                  fontWeight="bold"
+                  sx={{ m: "10px 0 0 0" }}
+                >
+                  Yuxin Ye
+                </Typography>
+                <Typography variant="h5" color={colors.greenAccent[500]}>
+                  CM Tech
+                </Typography>
+              </Box>
+            </Box>
+          )}
         </Menu>
       </ProSidebar>
     </Box>
