@@ -1,6 +1,10 @@
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 
+const capitalise = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 const Header = ({ title, subtitle }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -12,10 +16,10 @@ const Header = ({ title, subtitle }) => {
         fontWeight="bold"
         sx={{ mb: "5px" }}
       >
-        {title}
+        {title.toUpperCase()}
       </Typography>
       <Typography variant="h5" color={colors.greenAccent[400]}>
-        {subtitle}
+        {capitalise(subtitle)}
       </Typography>
     </Box>
   );
