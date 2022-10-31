@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material";
 import { geoFeatures } from "../data/mockGeoFeatures";
 import { mockGeographyData as data } from "../data/mockData";
 
-const Choropleth = ({}) => {
+const Choropleth = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -45,37 +45,40 @@ const Choropleth = ({}) => {
       unknownColor="#666666"
       label="properties.name"
       valueFormat=".2s"
-      projectionTranslation={[0.5, 0.5]}
+      projectionTranslation={isDashboard ? [0.49, 0.6] : [0.5, 0.5]}
       projectionRotation={[0, 0, 0]}
-      enableGraticule={true}
-      graticuleLineColor="#dddddd"
-      borderWidth={0.5}
+      borderWidth={1.0}
       borderColor="#152538"
-      legends={[
-        {
-          anchor: "bottom-left",
-          direction: "column",
-          justify: true,
-          translateX: 20,
-          translateY: -100,
-          itemsSpacing: 0,
-          itemWidth: 94,
-          itemHeight: 18,
-          itemDirection: "left-to-right",
-          itemTextColor: "#444444",
-          itemOpacity: 0.85,
-          symbolSize: 18,
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemTextColor: "#000000",
-                itemOpacity: 1,
+      projectionScale={isDashboard ? 40 : 150}
+      legends={
+        !isDashboard
+          ? [
+              {
+                anchor: "bottom-left",
+                direction: "column",
+                justify: true,
+                translateX: 20,
+                translateY: -100,
+                itemsSpacing: 0,
+                itemWidth: 94,
+                itemHeight: 18,
+                itemDirection: "left-to-right",
+                itemTextColor: colors.grey[100],
+                itemOpacity: 0.85,
+                symbolSize: 18,
+                effects: [
+                  {
+                    on: "hover",
+                    style: {
+                      itemTextColor: "#000000",
+                      itemOpacity: 1,
+                    },
+                  },
+                ],
               },
-            },
-          ],
-        },
-      ]}
+            ]
+          : undefined
+      }
     />
   );
 };
