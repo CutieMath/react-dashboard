@@ -14,7 +14,7 @@ const FAQ = () => {
     <Box m="20px">
       <Header title="FAQ" subtitle="frequently asked questions" />
 
-      <Accordion>
+      <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
             An important question
