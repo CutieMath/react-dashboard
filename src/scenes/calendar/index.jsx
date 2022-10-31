@@ -24,7 +24,6 @@ const Calendar = () => {
     const title = prompt("Plesae enter a new title for your event");
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
-
     if (title) {
       calendarApi.addEvent({
         id: `${selected.dateStr}-${title}`,
@@ -34,23 +33,24 @@ const Calendar = () => {
         allDay: selected.allDay,
       });
     }
+  };
 
-    const handleDeleteEvent = (selected) => {
-      if (
-        window.confirm(
-          `Are you sure you want to delete this event '${selected.event.title}'? `
-        )
-      ) {
-        selected.event.remove();
-      }
-    };
+  const handleDeleteEvent = (selected) => {
+    if (
+      window.confirm(
+        `Are you sure you want to delete this event '${selected.event.title}'? `
+      )
+    ) {
+      selected.event.remove();
+    }
   };
 
   return (
     <Box m="20px">
-      <Header title="calendar" subtitle="here you go your awesome calendar" />
+      <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
+
       <Box display="flex" justifyContent="space-between">
-        {/* Calendar Sidebar  */}
+        {/* CALENDAR SIDEBAR */}
         <Box
           flex="1 1 20%"
           backgroundColor={colors.primary[400]}
@@ -65,7 +65,7 @@ const Calendar = () => {
                 sx={{
                   backgroundColor: colors.greenAccent[500],
                   margin: "10px 0",
-                  borderRadius: "4px",
+                  borderRadius: "2px",
                 }}
               >
                 <ListItemText
@@ -79,14 +79,51 @@ const Calendar = () => {
                       })}
                     </Typography>
                   }
-                ></ListItemText>
+                />
               </ListItem>
             ))}
           </List>
+        </Box>
+
+        {/* CALENDAR */}
+        <Box flex="1 1 100%" ml="15px">
+          <FullCalendar
+            height="75vh"
+            plugins={[
+              dayGridPlugin,
+              timeGridPlugin,
+              interactionPlugin,
+              listPlugin,
+            ]}
+            headerToolbar={{
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+            }}
+            initialView="dayGridMonth"
+            editable={true}
+            selectable={true}
+            selectMirror={true}
+            dayMaxEvents={true}
+            select={handleDateClick}
+            eventClick={handleDeleteEvent}
+            eventsSet={(events) => setCurrentEvents(events)}
+            initialEvents={[
+              {
+                id: "12315",
+                title: "All-day event",
+                date: "2022-09-14",
+              },
+              {
+                id: "5123",
+                title: "Timed event",
+                date: "2022-09-28",
+              },
+            ]}
+          />
         </Box>
       </Box>
     </Box>
   );
 };
-
 export default Calendar;
