@@ -29,7 +29,7 @@ const Contacts = () => {
       flex: 1,
       renderCell: (params) => {
         return (
-          <Typography color={colors.greenAccent[800]}>
+          <Typography color={colors.greenAccent[300]}>
             ${params.row.cost}
           </Typography>
         );
@@ -56,7 +56,7 @@ const Contacts = () => {
             borderBottom: "none",
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[800],
+            color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],
@@ -69,7 +69,7 @@ const Contacts = () => {
             backgroundColor: colors.blueAccent[700],
           },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[800]} !important`,
+            color: `${colors.greenAccent[300]} !important`,
           },
         }}
       >

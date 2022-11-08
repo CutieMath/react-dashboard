@@ -12,7 +12,6 @@ import BarChart from "../../components/BarChart";
 import Choropleth from "../../components/Choropleth";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
-import { color } from "@mui/system";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -21,7 +20,7 @@ const Dashboard = () => {
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="dashboard" subtitle="welcome back!" />
+        <Header title="dashboard" subtitle="welcome back Yuxin!" />
         <Box>
           <Button
             sx={{
